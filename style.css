@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+/* pre-build-in */
+:root {
+    --color-primary: #4CAF50;
+    --color-primary-dark: #45a049;
+    --color-secondary: #2196F3;
+    --color-text: #333;
+    --color-text-light: #666;
+    --color-background: #fff;
+    --color-background-alt: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;  /*  this property for 'footer' element */
+    scroll-behavior: smooth;
+}
+
+
+/* ------------------- nav -----------------------------------------------*/
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+.nav li {
+    position: relative; /* Required for dropdown positioning */
+}
+
+nav.scrolled {
+    background-color: var(--color-background);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+nav ul{
+    float: right;
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li a{
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a.active , a:hover{
+    color: rgb(195, 0, 255);
+    transition: 0.5s;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: var(--color-text);
+    float: right;
+    line-height: 60px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+/* Dropdown Menu Styling */
+
+.dropdown:hover{
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position dropdown below parent link */
+    left: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0; 
+    display: none;  /*Initially hidden */
+    z-index: 1000;
+    background-color: var(--color-background);
+}
+
+.dropdown-menu a {
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+}
+.dropdown-menu a:hover {
+    color: rgb(195, 0, 255);;
+} 
+
+/* Show Dropdown on Hover */
+.dropdown:hover .dropdown-menu, 
+.dropdown.open .dropdown-menu {
+    display: block;
+}
+
+@media (max-width: 1150px) {
+    nav ul li a{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 940px){
+    .checkbtn{
+        display: block;
+    }
+
+    nav ul{
+        position: fixed;
+        width: 100%;
+        top: 60px;
+        left: 100%;
+        text-align: center;
+        margin-top: 10px;
+        transition: all ease .5s;
+        background-color: var(--color-background-alt);
+        max-height: 90vh; /* Allow scrolling if the menu is too long */
+        overflow-y: auto; /* Enable scrolling */
+    }
+
+    nav ul li{
+        display: block;
+        margin: 25px 60px ;
+    }
+
+    nav ul li a{
+        font-size: 15px;
+    }
+
+    a:hover,a.active{
+        background: none;
+        color: rgb(195, 0, 255);
+    }
+
+    #check:checked ~ ul{
+        left: 0;
+    }
+
+    .dropdown-menu {
+        position: static; /* Dropdown menu appears inline */
+        box-shadow: none;
+    }
+
+}
+
+
+
+/*-------------------------- footer ---------------------------*/
+.foot{
+    background-color: var(--color-text);
+    position: sticky;          /* always in bottom footer property */
+    top: 100%;                 /* always in bottom footer property */
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.foot span{
+    color: var(--color-background-alt);
+}
+
+.foot a{
+    color: var(--color-background-alt);
+}
+
+.foot a:hover{
+    color: var(--color-primary);
+    background: none;
+    transition: 0.2s;
+}
+
+/*-------------------- footer responsive ------------------------------*/
+@media(max-width: 495px){
+
+    #connect{
+        display: none;
+    }
+
+    #copy{
+        font-size: 8px;
+    }
+}
+
+/* main */
+
+
+/* Hero Section */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.hero {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    color: var(--color-background);
+    padding: 6rem 0 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+}
+
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.hero-image {
+    max-width: 100%;
+    animation: fadeInLeft 0.8s ease-out 0.3s both;
+}
+
+.hero-image video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* hero mobile responisve */
+@media (max-width: 430px) {
+    .hero h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+    
+    .hero p {
+        font-size: 0.6rem;
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease-out 0.5s both;
+    }
+}
+
+/* Services Section */
+.services {
+    padding: 4rem 0;
+    background-color: var(--color-background-alt);
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: linear-gradient(135deg, rgb(88, 241, 255) 0%, rgb(84, 255, 175) 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.3s; }
+.service-card:nth-child(2) { animation-delay: 0.5s; }
+.service-card:nth-child(3) { animation-delay: 0.7s; }
+.service-card:nth-child(4) { animation-delay: 0.9s; }
+.service-card:nth-child(5) { animation-delay: 0.3s; }
+.service-card:nth-child(6) { animation-delay: 0.5s; }
+.service-card:nth-child(7) { animation-delay: 0.7s; }
+.service-card:nth-child(8) { animation-delay: 0.9s; }
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.service-card a {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* India Update Section */
+.indUpdate {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-background);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.indUpdate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+}
+
+.indUpdate .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.indUpdate h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+/*Updates---------------*/
+.update-box {
+    width: 450px;
+    background: linear-gradient(135deg, rgb(143, 255, 208) 0% , rgb(147, 207, 255) 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease-out both;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.update-wrapper {
+    position: absolute;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    padding-top: 10px;
+}
+
+.update-wrapper a{
+    text-decoration: none;
+}
+
+.update-wrapper a p{
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0 20px 10px 20px;
+    margin: 10px 0;
+    text-align: left;
+    border-bottom: 2px solid white;
+}
+
+/*Update Responsive*/
+@media (max-width: 500px) {
+    .update-box{
+        width: 270px;
+    }
+        
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
